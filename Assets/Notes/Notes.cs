@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public class Notes {
+using UnityEngine.Video;
+public class Notes : MonoBehaviour {
 	// ---------------------------------
 	// Render Textures
 	// ---------------------------------
@@ -21,5 +21,27 @@ public class Notes {
 
 		// to remove it:
 		Camera.main.targetTexture = null;
+	}
+
+	// ---------------------------------
+	// Video Player Component
+	// ---------------------------------
+
+	// - Useful for cutscenes, custom tutorials, showing combos, etc
+
+	// - Supports all kinds of formats - mp4, webm, ogg, etc
+	// -- It also supports URL links to videos
+
+	// - The main option for inported videos is the Transcode option, enabling it will make Unity re-encode the video to a format that is supported by all platforms
+
+	// - To render in fullscreen, set the video player's render mode to Camera Near Plane and set the camera to the main camera
+	// -- Use the Direct audio output mode
+
+	public void VideoPlayerTest() {
+		VideoPlayer videoPlayer = GetComponent<VideoPlayer>();
+		videoPlayer.Play();
+
+		int videoFramesPerSecond = 60;
+		videoPlayer.frame = 10 * videoFramesPerSecond; // Go to 10 seconds
 	}
 }
