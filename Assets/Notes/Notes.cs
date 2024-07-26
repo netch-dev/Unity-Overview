@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Video;
 public class Notes : MonoBehaviour {
 	#region Text
@@ -189,5 +190,50 @@ public class Notes : MonoBehaviour {
 	// - A simple way to store player data
 	// - Great for prototypes, but not recommended for production
 	// - Useful for simple settings, like storing if the game is fullscreen, last resolution, etc
+	#endregion
+
+	#region Legacy Input Manager vs Input System
+	// - Legacy Input Manager:
+	// -- Simple to use, good for prototypes
+	public class TestingInputManager : MonoBehaviour {
+
+		private void Update() {
+			if (Input.GetMouseButtonDown(0)) {
+				Debug.Log("Left mouse button clicked");
+			}
+
+			if (Input.GetKeyDown(KeyCode.T)) {
+				Debug.Log("T key pressed");
+			}
+		}
+	}
+
+	// - Input System:
+	// - Creates a layer of abstraction between the input and the game actions
+	// -- This is great because its easy to swap out input types 
+
+	// - First create a new input action asset
+	// -- Then assign the action maps and actions within that asset
+	// --- After that generate the C# class by clicking on the asset and clicking on the generate C# class toggle
+	// --- Finally you can reference that class in your script:
+	public class TestingInputSystem : MonoBehaviour {
+		private void Awake() {
+			PlayerInputActions playerInputActions = new PlayerInputActions();
+			playerInputActions.Enable();
+			playerInputActions.Player.Shoot.performed += ctx => Debug.Log("Shoot performed");
+		}
+
+		private void Update() {
+			// The input system also has basic classes for accessing the input:
+			// Useful for testing but not recommended for production
+			if (Mouse.current.leftButton.wasPressedThisFrame) {
+				Debug.Log("Left mouse button clicked");
+			}
+
+			if (Keyboard.current.tKey.wasPressedThisFrame) {
+				Debug.Log("T key pressed");
+			}
+		}
+	}
 	#endregion
 }
