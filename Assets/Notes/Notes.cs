@@ -48,7 +48,7 @@ public class Notes : MonoBehaviour {
 	// - Supports all kinds of formats - mp4, webm, ogg, etc
 	// -- It also supports URL links to videos
 
-	// - The main option for inported videos is the Transcode option, enabling it will make Unity re-encode the video to a format that is supported by all platforms
+	// - The main option for imported videos is the Transcode option, enabling it will make Unity re-encode the video to a format that is supported by all platforms
 
 	// - To render in fullscreen, set the video player's render mode to Camera Near Plane and set the camera to the main camera
 	// -- Use the Direct audio output mode
@@ -80,4 +80,13 @@ public class Notes : MonoBehaviour {
 			}
 		}
 	}
+
+	// ---------------------------------
+	// Trail Renderer
+	// ---------------------------------
+
+	// - Setting the material shader to unlit is recommended for trails
+	// -- To use colours on a trail, set the material shader to particles/additive
+
+	// - When working with trails in code you can use the Emitting property to enable/disable the trail
 }
