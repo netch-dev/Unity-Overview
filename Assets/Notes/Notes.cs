@@ -168,7 +168,14 @@ public class Notes : MonoBehaviour {
 	}
 	#endregion
 
-	#region Game Object Icon Gizmos
+	#region Script Execution Order
+	// - If you need to run a script before another script, you can set the execution order
 
+	// - Open edit -> project settings -> script execution order
+	// -- Scripts that arent set here will run in the default time
+	// -- You can drag and drop the scripts to change the order
+
+	// - It's better to use this sparingly, as it can make the project harder to maintain
+	// -- It usually can be resolved by using Awake() to initialize objects and Start() to set up references
 	#endregion
 }
