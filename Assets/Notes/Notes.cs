@@ -184,4 +184,10 @@ public class Notes : MonoBehaviour {
 
 	// - You can see logs from game builds here - \AppData\LocalLow\CompanyName\GameName\
 	#endregion
+
+	#region Player Prefs
+	// - A simple way to store player data
+	// - Great for prototypes, but not recommended for production
+	// - Useful for simple settings, like storing if the game is fullscreen, last resolution, etc
+	#endregion
 }
