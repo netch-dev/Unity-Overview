@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 public class Notes : MonoBehaviour {
@@ -119,4 +120,60 @@ public class Notes : MonoBehaviour {
 	// - It's a good practice to put the scripts in their own namespace
 
 	// - If you want scripts to access scripts in another assembly, you can add a reference to that assembly in the assembly definition file
+
+	// ---------------------------------
+	// Resources
+	// ---------------------------------
+
+	// - Simple way to load assets during runtime
+	// - Unity loads all referenced objects in the scene, but sometimes you might not want to
+	// -- For example if you have 1000 hats in the game, you don't want to load all of them at the start for faster loading times
+
+	// - In order to load a resource, you need to put it in a folder named Resources
+	// -- You can have subfolders within the Resources folder but you'll need to include the path when loading the resource
+
+	// - Resources.Load is synchronous and will block the main thread
+	// -- If you're loading a huge file consider using the async version
+	// --- Resources.LoadAsync
+
+	// - Every single asset that is in the Resources folder will be included in the build whether you use it or not
+	// -- Use it only for the assets that you'll actually need
+
+	public class ResourcesExample : MonoBehaviour {
+		private void Start() {
+			LoadSingleResourceExample();
+			LoadMultipleExample();
+		}
+
+		private void LoadSingleResourceExample() {
+			Transform examplePrefab = Resources.Load<Transform>("examplePrefab");
+			Instantiate(examplePrefab);
+
+			// To unload the asset from memory use:
+			Resources.UnloadAsset(examplePrefab);
+
+			// You can also use this which will automatically unload unused assets:
+			Resources.UnloadUnusedAssets();
+		}
+
+		private void LoadMultipleExample() {
+			// Put all of the resources in a folder within the Resources folder
+
+			// Here the prefabs are in the examplePrefabs folder
+			Transform[] examplePrefabs = Resources.LoadAll<Transform>("examplePrefabs");
+			foreach (Transform t in examplePrefabs) {
+				// Do something with the prefabs
+				Instantiate(t);
+			}
+		}
+
+		private void LoadAsyncExample() {
+			// This will run in the background, and will let you know when the asset is loaded
+
+			Resources.LoadAsync<Transform>("examplePrefab").completed += operation => {
+				ResourceRequest resourceRequest = (ResourceRequest)operation;
+				Instantiate(resourceRequest.asset);
+			};
+		}
+	}
 }
