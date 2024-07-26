@@ -178,4 +178,10 @@ public class Notes : MonoBehaviour {
 	// - It's better to use this sparingly, as it can make the project harder to maintain
 	// -- It usually can be resolved by using Awake() to initialize objects and Start() to set up references
 	#endregion
+
+	#region Unity Logs
+	// - If the editor crashes you can check the logs here - \AppData\Local\Unity\Editor\
+
+	// - You can see logs from game builds here - \AppData\LocalLow\CompanyName\GameName\
+	#endregion
 }
