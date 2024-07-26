@@ -1,10 +1,10 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 public class Notes : MonoBehaviour {
+	#region Text
 	// ---------------------------------
-	// Text
+	// 
 	// ---------------------------------
 
 	// - 1. 3D Text / UI Text
@@ -17,10 +17,9 @@ public class Notes : MonoBehaviour {
 	// -- Ideally you should use TextMeshPro for all text
 	public TextMeshPro textMeshPro; // World text
 	public TextMeshProUGUI textMeshProUGUI; // UI text
+	#endregion
 
-	// ---------------------------------
-	// Render Textures
-	// ---------------------------------
+	#region Render Textures
 
 	// - Render textures can render a camera view into a texture
 	// -- Useful for minimaps, ingame tvs, security cameras, etc
@@ -39,10 +38,9 @@ public class Notes : MonoBehaviour {
 		// to remove it:
 		Camera.main.targetTexture = null;
 	}
+	#endregion
 
-	// ---------------------------------
-	// Video Player Component
-	// ---------------------------------
+	#region Video Player Component
 
 	// - Useful for cutscenes, custom tutorials, showing combos, etc
 
@@ -61,11 +59,9 @@ public class Notes : MonoBehaviour {
 		int videoFramesPerSecond = 60;
 		videoPlayer.frame = 10 * videoFramesPerSecond; // Go to 10 seconds
 	}
+	#endregion
 
-	// ---------------------------------
-	// Shader Graph
-	// ---------------------------------
-
+	#region Shader Graph
 	// - The name for the primary texture is usually called MainTex and _MainTex for the reference
 
 	public class ChangeShaderColourExample : MonoBehaviour {
@@ -81,20 +77,17 @@ public class Notes : MonoBehaviour {
 			}
 		}
 	}
+	#endregion
 
-	// ---------------------------------
-	// Trail Renderer
-	// ---------------------------------
+	#region Trail Renderer
 
 	// - Setting the material shader to unlit is recommended for trails
 	// -- To use colours on a trail, set the material shader to particles/additive
 
 	// - When working with trails in code you can use the Emitting property to enable/disable the trail
+	#endregion
 
-	// ---------------------------------
-	// Pro Builder
-	// ---------------------------------
-
+	#region Pro Builder
 	// - Built in tool for creating 3D models in Unity
 	// - Install in the package manager -> Unity Registry -> ProBuilder
 
@@ -103,10 +96,9 @@ public class Notes : MonoBehaviour {
 	// - Hold shift with a face selected to loop cut
 
 	// - Use the ProBuilderize button to convert a mesh to a ProBuilder mesh
+	#endregion
 
-	// ---------------------------------
-	// Assembly Definitions
-	// ---------------------------------
+	#region Assembly Definitions
 
 	// - Organize your scripts into assemblies to improve compile times
 	// - Forces you to write better code with fewer dependencies
@@ -120,11 +112,9 @@ public class Notes : MonoBehaviour {
 	// - It's a good practice to put the scripts in their own namespace
 
 	// - If you want scripts to access scripts in another assembly, you can add a reference to that assembly in the assembly definition file
+	#endregion
 
-	// ---------------------------------
-	// Resources
-	// ---------------------------------
-
+	#region Resources
 	// - Simple way to load assets during runtime
 	// - Unity loads all referenced objects in the scene, but sometimes you might not want to
 	// -- For example if you have 1000 hats in the game, you don't want to load all of them at the start for faster loading times
@@ -176,4 +166,9 @@ public class Notes : MonoBehaviour {
 			};
 		}
 	}
+	#endregion
+
+	#region Game Object Icon Gizmos
+
+	#endregion
 }
