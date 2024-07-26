@@ -89,4 +89,17 @@ public class Notes : MonoBehaviour {
 	// -- To use colours on a trail, set the material shader to particles/additive
 
 	// - When working with trails in code you can use the Emitting property to enable/disable the trail
+
+	// ---------------------------------
+	// Pro Builder
+	// ---------------------------------
+
+	// - Built in tool for creating 3D models in Unity
+	// - Install in the package manager -> Unity Registry -> ProBuilder
+
+	// - Great for prototyping levels
+
+	// - Hold shift with a face selected to loop cut
+
+	// - Use the ProBuilderize button to convert a mesh to a ProBuilder mesh
 }
