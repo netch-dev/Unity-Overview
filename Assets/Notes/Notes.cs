@@ -102,4 +102,21 @@ public class Notes : MonoBehaviour {
 	// - Hold shift with a face selected to loop cut
 
 	// - Use the ProBuilderize button to convert a mesh to a ProBuilder mesh
+
+	// ---------------------------------
+	// Assembly Definitions
+	// ---------------------------------
+
+	// - Organize your scripts into assemblies to improve compile times
+	// - Forces you to write better code with fewer dependencies
+	// - Small projects don't need to worry about this, but as your project grows it can be useful
+
+	// - To create an assembly:
+	// -- Right click -> Create -> Assembly Definition
+	// -- Make sure all of the included scripts are in the same folder
+	// --- If you need to include scripts from other folders, you can use right click -> 'assembly definition reference' in the secondary folder. Then add the main assembly as the reference
+
+	// - It's a good practice to put the scripts in their own namespace
+
+	// - If you want scripts to access scripts in another assembly, you can add a reference to that assembly in the assembly definition file
 }
