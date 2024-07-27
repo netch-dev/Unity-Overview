@@ -265,14 +265,30 @@ public class Notes : MonoBehaviour {
 
 	// - Animator Component:
 	// -- More complex, but more powerful
+	#endregion
 
+	#region Animation Window
 	// - Usually when you make an animation you only want to move the child objects
 
-	// - Animations are saved with the exact gameobject name
+	// - Animation properties are saved with the exact gameobject name
 
 	// - Imported animations that are read only can be edited by duplicating the animation with CTRL-D
 
 	// - Animation events can be used to time actions with animations
 	// -- The script that has the action must be attached to the same object that has the animator
+	#endregion
+
+	#region Animator
+	// - Transitions:
+	// -- Has exit time: Automatically trigger the transition when the previous animation is complete or near complete
+	// -- Exit time: When to transition to the next state, in percentage
+
+	// - Instead of using a string to set parameters, use the id. Less brittle a generates less garbage
+	// Replace animator.SetBool("vertical", true);
+	// with:
+	// int verticalId = Animator.StringToHash("vertical");
+	// animator.SetBool(verticalId, true);
+
+	// - Use the animation controller override object to create variations of that logic. For example your enemy logic can have two controllers, one for the normal enemy and one for a large enemy
 	#endregion
 }
