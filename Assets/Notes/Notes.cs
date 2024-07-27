@@ -265,5 +265,14 @@ public class Notes : MonoBehaviour {
 
 	// - Animator Component:
 	// -- More complex, but more powerful
+
+	// - Usually when you make an animation you only want to move the child objects
+
+	// - Animations are saved with the exact gameobject name
+
+	// - Imported animations that are read only can be edited by duplicating the animation with CTRL-D
+
+	// - Animation events can be used to time actions with animations
+	// -- The script that has the action must be attached to the same object that has the animator
 	#endregion
 }
