@@ -257,4 +257,13 @@ public class Notes : MonoBehaviour {
 
 	// --- Or instead of the class reference, you can use the Player Input component to assign the input actions
 	#endregion
+
+	#region Animation Component vs Animator Component
+	// - Animation Component:
+	// -- Simple to use legacy component
+	// -- Great for simple state objects that only need one animation
+
+	// - Animator Component:
+	// -- More complex, but more powerful
+	#endregion
 }
