@@ -210,8 +210,22 @@ public class Notes : MonoBehaviour {
 
 	// - Input System:
 	// - Creates a layer of abstraction between the input and the game actions
-	// -- This is great because its easy to swap out input types 
+	// -- This is great because its easy to swap out input types, like keyboard, controller, touch screens, etc
 
+	// - Action Maps
+	// -- Organize actions into groups, like player, vehicles, ui while paused, etc
+	// -- Contains a list of individual actions 
+
+	// - Individual Actions
+	// -- Actions like jump, shoot, move, etc
+	// -- Set the bindings for the action, like keyboard, controller, etc
+
+	// - Action properties
+	// -- Use Value for continuous inputs, like movement via joystick
+	// -- Use Button for discrete inputs, like jump, shoot, etc
+	// -- Use Pass Through for reading input from every device at once
+
+	// - To use the input system:
 	// - First create a new input action asset
 	// -- Then assign the action maps and actions within that asset
 	// --- After that generate the C# class by clicking on the asset and clicking on the generate C# class toggle
@@ -219,7 +233,12 @@ public class Notes : MonoBehaviour {
 	public class TestingInputSystem : MonoBehaviour {
 		private void Awake() {
 			PlayerInputActions playerInputActions = new PlayerInputActions();
-			playerInputActions.Enable();
+
+			// This will enable all of the action maps
+			//playerInputActions.Enable(); 
+
+			// You can also enable individual action maps
+			playerInputActions.Player.Enable();
 			playerInputActions.Player.Shoot.performed += ctx => Debug.Log("Shoot performed");
 		}
 
@@ -235,5 +254,7 @@ public class Notes : MonoBehaviour {
 			}
 		}
 	}
+
+	// --- Or instead of the class reference, you can use the Player Input component to assign the input actions
 	#endregion
 }
