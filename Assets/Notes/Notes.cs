@@ -297,5 +297,11 @@ public class Notes : MonoBehaviour {
 	// -- Great for handling separate animations per direction
 
 	// - Helps blend animations like Idle -> Run || Walk Left -> Walk Front
+
+	// - Blend Types:
+	// -- 1D: One parameter
+	// -- 2D Simple Directional: One animation per direction
+	// -- 2D Freeform Directional: Multiple animations per direction
+	// -- 2D Freeform Cartesian: Used when the animations are not directional
 	#endregion
 }
