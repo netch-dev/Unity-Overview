@@ -291,4 +291,11 @@ public class Notes : MonoBehaviour {
 
 	// - Use the animation controller override object to create variations of that logic. For example your enemy logic can have two controllers, one for the normal enemy and one for a large enemy
 	#endregion
+
+	#region Animation Blend Trees
+	// - Used to blend multiple animations based on parameters
+	// -- Great for handling separate animations per direction
+
+	// - Helps blend animations like Idle -> Run || Walk Left -> Walk Front
+	#endregion
 }

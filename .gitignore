@@ -72,3 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 Assets/Paid Assets/
+/Packages/com.singularitygroup.hotreload
+/Assets/HotReload
+Assets/Characters/Ch49_nonPBR.fbx
