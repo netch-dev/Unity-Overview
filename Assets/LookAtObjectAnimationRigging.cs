@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
 public class LookAtObjectAnimationRigging : MonoBehaviour {
-
 	private Rig rig;
 	private float targetWeight;
 	private void Awake() {
 		rig = GetComponent<Rig>();
+		targetWeight = rig.weight;
 	}
 
 	private void Update() {
