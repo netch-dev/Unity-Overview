@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.Video;
 public class Notes : MonoBehaviour {
 	#region Text
@@ -329,5 +330,27 @@ public class Notes : MonoBehaviour {
 
 	// - The order the rigs are applied is the order in which they are in the hierarchy
 	// -- For the weapon aiming rig, the hand rig should be after the body rig so it overrides the body rig
+	#endregion
+
+	#region RawImage Vs Image, Sprite Vs Texture
+	// - RawImage:
+	// -- Used for displaying textures
+
+	// - Image:
+	// -- Used for displaying sprites
+
+	public class TestingSpriteTextures : MonoBehaviour {
+		[SerializeField] private Texture2D texture2D;
+		[SerializeField] private Sprite sprite;
+
+		private void Awake() {
+			// Sprites
+			Sprite sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f));
+			GetComponent<Image>().sprite = sprite;
+
+			// Texture
+			GetComponent<RawImage>().texture = texture2D;
+		}
+	}
 	#endregion
 }
