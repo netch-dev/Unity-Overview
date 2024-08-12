@@ -322,6 +322,10 @@ public class Notes : MonoBehaviour {
 	// - A package for adding dynamic animations on top of static animations
 	// -- For example having a standard animation and making the head look at something in the scene
 
+	// - To setup a character for animation rigging:
+	// - Selected the character and go click the 'Animation Rigging' menu
+	// -- Then click 'Rig Setup'
+	// --- Optionally you can click the 'Bone Renderer Setup' for a visual representation of the bones
 
 	#endregion
 }
