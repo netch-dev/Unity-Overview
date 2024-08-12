@@ -319,7 +319,7 @@ public class Notes : MonoBehaviour {
 	#endregion
 
 	#region Animation Rigging
-	// - A package for adding dynamic animations on top of static animations
+	// - A package for adding dynamic modifications on top of static animations
 	// -- For example having a standard animation and making the head look at something in the scene
 
 	// - To setup a character for animation rigging:
@@ -327,5 +327,7 @@ public class Notes : MonoBehaviour {
 	// -- Then click 'Rig Setup'
 	// --- Optionally you can click the 'Bone Renderer Setup' for a visual representation of the bones
 
+	// - The order the rigs are applied is the order in which they are in the hierarchy
+	// -- For the weapon aiming rig, the hand rig should be after the body rig so it overrides the body rig
 	#endregion
 }

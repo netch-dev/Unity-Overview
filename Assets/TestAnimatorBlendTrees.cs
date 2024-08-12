@@ -40,7 +40,6 @@ public class TestAnimatorBlendTrees : MonoBehaviour {
 	private void BlendTreeExample_2() {
 		// Using the 2d directional blend type
 		Vector2 inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-		Debug.Log(inputVector);
 		animator.SetFloat("sideMovement", inputVector.x, 0.1f, Time.deltaTime);
 		animator.SetFloat("forwardMovement", inputVector.y, 0.1f, Time.deltaTime);
 	}
