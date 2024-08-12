@@ -317,4 +317,11 @@ public class Notes : MonoBehaviour {
 	// --- For example a sword swing animation will only affect the arm/upper body bones
 	// ---- The transform section within the avatar mask only works on non-humanoid rigs, or any extra bones that are not part of the humanoid rig
 	#endregion
+
+	#region Animation Rigging
+	// - A package for adding dynamic animations on top of static animations
+	// -- For example having a standard animation and making the head look at something in the scene
+
+
+	#endregion
 }
