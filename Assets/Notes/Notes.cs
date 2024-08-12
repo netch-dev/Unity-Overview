@@ -289,7 +289,7 @@ public class Notes : MonoBehaviour {
 	// int verticalId = Animator.StringToHash("vertical");
 	// animator.SetBool(verticalId, true);
 
-	// - Use the animation controller override object to create variations of that logic. For example your enemy logic can have two controllers, one for the normal enemy and one for a large enemy
+	// - Use the 'animation controller override' object to create variations of that logic. For example your enemy logic can have two controllers, one for the normal enemy and one for a large enemy
 	#endregion
 
 	#region Animation Blend Trees
@@ -303,5 +303,18 @@ public class Notes : MonoBehaviour {
 	// -- 2D Simple Directional: One animation per direction
 	// -- 2D Freeform Directional: Multiple animations per direction
 	// -- 2D Freeform Cartesian: Used when the animations are not directional
+	#endregion
+
+	#region Animation Avatar
+	// - Useful for retargeting animations to different characters
+	// -- All you need to do is assign the avatar for that specific mesh to the animator
+
+	// - The muscles settings can be used to create movement constraints
+	// -- For example, you can limit the movement on a heavily armoured character so the mesh doesn't clip
+
+	// - In the animator you can use multiple layers and apply an avatar mask
+	// -- The avatar mask will only apply the animation to the selected bones
+	// --- For example a sword swing animation will only affect the arm/upper body bones
+	// ---- The transform section within the avatar mask only works on non-humanoid rigs, or any extra bones that are not part of the humanoid rig
 	#endregion
 }
