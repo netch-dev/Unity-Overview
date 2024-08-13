@@ -407,6 +407,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2731254a783bacc46b6abcab304c55f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assetReference:
+    m_AssetGUID: 12c858aafb214b14aabc764f38f54177
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  assetLabelReference:
+    m_LabelString: environment
 --- !u!4 &1824990069
 Transform:
   m_ObjectHideFlags: 0
