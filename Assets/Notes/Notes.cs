@@ -441,7 +441,7 @@ public class Notes : MonoBehaviour {
 	#endregion
 
 	#region Addressables Remote
-	// - Setup addressables to load assets from a remote location (cloud, cdn)
+	// - Setup addressables to load assets from a remote location (cloud, cdn, or your own server)
 	// -- Deliver updated assets to players without needing to update the game
 
 	// - To setup addressables remote:
@@ -452,5 +452,12 @@ public class Notes : MonoBehaviour {
 	// ------ To update the asset bundles, in the same window as building, click the 'Update a Previous Build' button, and upload them to the server
 
 	// - To use the remote assets within the editor you can change the 'Play Mode Script' option in the Addressables Groups window
+	#endregion
+
+	#region Unity Cloud Content Delivery
+	// - A service that delivers assets to players from a cloud server
+
+	// - Can be easily integrated with addressables
+	// -- This is a general cdn so you can use any assets with it, not just addressables
 	#endregion
 }
