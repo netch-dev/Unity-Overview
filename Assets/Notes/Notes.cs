@@ -371,7 +371,7 @@ public class Notes : MonoBehaviour {
 	// - They should be spawned on death, not always in the scene for performance reasons
 	// -- Use this recursive function to match the transforms of the ragdoll to the original character:
 	/*
-	 * private void MatchAllChildTransforms(Transform root, Transform clone) {
+	private void MatchAllChildTransforms(Transform root, Transform clone) {
 		foreach (Transform child in root) {
 			Transform cloneChild = clone.Find(child.name);
 			if (cloneChild) {
@@ -382,6 +382,25 @@ public class Notes : MonoBehaviour {
 			}
 		}
 	}
-	 */
+	*/
+	#endregion
+
+	#region Addressables
+	// - A package for managing assets in the project
+	// -- Useful for loading assets during runtime
+	// --- Keeps the loading times and memory footprint low by loading assets when needed
+	// ---- Without using addressables, all referenced assets in the scene are loaded into memory
+
+	// - Addressables are entirely asynchronous
+
+	// - Scene changes release all of the assets in the previous scene
+
+	// - To use Addressables:
+	// -- Open the window -> Window -> Asset Management -> Addressables
+	// -- Create a new group
+	// -- Drag and drop the assets into the group
+	// -- Use the addressables API to load the assets
+	// --- Addressables.LoadAssetAsync<GameObject>("assetName").Completed += operation => { Instantiate(operation.Result); };
+
 	#endregion
 }

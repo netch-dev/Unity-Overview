@@ -87494,8 +87494,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268780896}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -90157,7 +90157,7 @@ PrefabInstance:
     - target: {fileID: 6381733136975352682, guid: 3a0f97734fafa3143914a3aeb1462125,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3617474
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6381733136975352682, guid: 3a0f97734fafa3143914a3aeb1462125,
         type: 3}
@@ -90207,7 +90207,7 @@ PrefabInstance:
     - target: {fileID: 7326846072388439734, guid: 3a0f97734fafa3143914a3aeb1462125,
         type: 3}
       propertyPath: m_Name
-      value: Character_3
+      value: Character_3_Ragdoll_Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -91266,7 +91266,7 @@ SceneRoots:
   - {fileID: 203844589}
   - {fileID: 1160234427}
   - {fileID: 646194028}
+  - {fileID: 1268780897}
   - {fileID: 543450652611454150}
   - {fileID: 543450652654546244}
   - {fileID: 5989471851937255760}
-  - {fileID: 1268780897}
