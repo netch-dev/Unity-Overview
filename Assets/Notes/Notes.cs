@@ -508,4 +508,22 @@ public class Notes : MonoBehaviour {
 		}
 	}
 	#endregion
+
+	#region Build Size Report
+	// - Check which assets are taking up the most space in the build
+
+	// - The build size report is in the editor logs
+	// -- To open the editor logs go to the top right corner of the console and click the three dots -> Open Editor Log
+
+	// - Search for 'Build Report' in the editor log
+	// -- This will show you the size of each asset in the build
+
+	// - To reduce the size of the build:
+	// - Compress textures, reduce their size, or use a texture atlas
+	// - Compress meshes
+	// - Compress animations
+	// - Compress sounds
+	// - Don't include assets, and download them from the cloud
+	// -- Mobile games do this to keep the initial download size small
+	#endregion
 }
