@@ -14,23 +14,41 @@ public class SpawnObjectAddressables : MonoBehaviour {
 
 	[SerializeField] private AssetLabelReference specialSpritesLabelReference;
 
+	private GameObject spawnedGameObject;
+
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.T)) {
 			InstantiateAddressableDirectly();
 			LoadAddressablesFolder();
 		}
+
+		if (Input.GetKeyDown(KeyCode.Y)) {
+			UnloadAddressable();
+		}
 	}
 
-	private void LoadAddressablesFolder() {
-		Addressables.LoadAssetsAsync<Sprite>(specialSpritesLabelReference, (sprite) => {
-			Debug.Log(sprite);
-		});
+	private void UnloadAddressable() {
+		if (spawnedGameObject) {
+			assetReferenceGameObject.ReleaseInstance(spawnedGameObject);
+			Debug.Log("Unloaded asset");
+		} else {
+			assetReferenceGameObject.ReleaseAsset();
+			Debug.Log("Unloaded asset reference");
+		}
 	}
 
 	private void InstantiateAddressableDirectly() {
-		assetReferenceGameObject.InstantiateAsync();
+		//assetReferenceGameObject.InstantiateAsync();
 
 		// This also has a Completed event that can be used to check if the asset was loaded successfully
+
+		assetReferenceGameObject.InstantiateAsync().Completed += (asyncOperationHandle) => {
+			if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded) {
+				spawnedGameObject = asyncOperationHandle.Result;
+			} else {
+				Debug.LogError("Failed to load asset");
+			}
+		};
 	}
 
 	private void LoadAddressableViaLabel() {
@@ -51,6 +69,12 @@ public class SpawnObjectAddressables : MonoBehaviour {
 				Debug.LogError("Failed to load asset");
 			}
 		};
+	}
+
+	private void LoadAddressablesFolder() {
+		Addressables.LoadAssetsAsync<Sprite>(specialSpritesLabelReference, (sprite) => {
+			Debug.Log(sprite);
+		});
 	}
 
 	// Shouldn't be used in production but it's possible to load an asset via a string path

@@ -396,6 +396,10 @@ public class Notes : MonoBehaviour {
 
 	// - Scene changes release all of the assets in the previous scene
 
+	// - They can also be unloaded manually:
+	// -- Addressables.ReleaseInstance(gameObject);
+	// -- Addressables.Release(assetReference);
+
 	// - To use Addressables:
 	// -- Open the window -> Window -> Asset Management -> Addressables
 	// -- Create a new group
