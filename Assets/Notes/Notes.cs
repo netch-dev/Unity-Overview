@@ -363,4 +363,25 @@ public class Notes : MonoBehaviour {
 	// - UnityWebRequestTexture can be used to download images
 	// -- returns a Texture2D
 	#endregion
+
+	#region Ragdolls
+	// - To create a ragdoll:
+	// -- Selected the character and click 3D object -> Ragdoll
+
+	// - They should be spawned on death, not always in the scene for performance reasons
+	// -- Use this recursive function to match the transforms of the ragdoll to the original character:
+	/*
+	 * private void MatchAllChildTransforms(Transform root, Transform clone) {
+		foreach (Transform child in root) {
+			Transform cloneChild = clone.Find(child.name);
+			if (cloneChild) {
+				cloneChild.position = child.position;
+				cloneChild.rotation = child.rotation;
+
+				MatchAllChildTransforms(child, cloneChild);
+			}
+		}
+	}
+	 */
+	#endregion
 }
