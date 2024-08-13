@@ -398,9 +398,7 @@ public class Notes : MonoBehaviour {
 	// - To use Addressables:
 	// -- Open the window -> Window -> Asset Management -> Addressables
 	// -- Create a new group
-	// -- Drag and drop the assets into the group
-	// -- Use the addressables API to load the assets
-	// --- Addressables.LoadAssetAsync<GameObject>("assetName").Completed += operation => { Instantiate(operation.Result); };
+	// -- Drag and drop the assets or folders into the group
 
 	#endregion
 }
