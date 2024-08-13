@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public static class WebRequestUtil {
-	// StartCoroutine requires a MonoBehaviour to run
 	private class WebRequestsMonoBehaviour : MonoBehaviour { }
 	private static WebRequestsMonoBehaviour Instance;
 
