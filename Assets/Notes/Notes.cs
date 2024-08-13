@@ -353,4 +353,12 @@ public class Notes : MonoBehaviour {
 		}
 	}
 	#endregion
+
+	#region UnityWebRequests - Contact External Servers
+	// - Useful for fetching data that might change after the game has been built
+	// -- Patch notes, leaderboards, workshop items, etc
+
+	// - The UnityWebRequest implements IDisposable, so you should use it in a using statement
+
+	#endregion
 }
