@@ -2,6 +2,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using UnityEngine.Video;
 public class Notes : MonoBehaviour {
@@ -459,5 +461,51 @@ public class Notes : MonoBehaviour {
 
 	// - Can be easily integrated with addressables
 	// -- This is a general cdn so you can use any assets with it, not just addressables
+	#endregion
+
+	#region Dynamic Resolution
+	// - Lower the resolution when the game is running on a lower end device, or if the frame rate is too low
+	// -- This can be done by changing the resolution scale
+
+	// - Only has an effect on GPU
+
+	// - There's 2 methods:
+
+	// 1. Dynamic resolution - https://docs.unity3d.com/Manual/DynamicResolution.html
+	// - Lower the resolution of certain cameras
+	// - Has some limitations - Must be using Metal for IOS, Vulkan for Android, and DX12 for Windows
+	// - To enable it, set 'allow dynamic resolution' to true in the camera settings
+
+	// 2. Render scale on the render asset (URP or HDRP)
+
+	public class TestDynamicResolution : MonoBehaviour {
+		private void Update() {
+			DynamicResolutionExample();
+
+			RenderScaleExample();
+		}
+
+		private void DynamicResolutionExample() {
+			// This requires the editor to be running in DX12
+			if (Input.GetKeyDown(KeyCode.T)) {
+				ScalableBufferManager.ResizeBuffers(0.1f, 0.1f);
+			}
+
+			if (Input.GetKeyDown(KeyCode.Y)) {
+				ScalableBufferManager.ResizeBuffers(1f, 1f);
+			}
+		}
+
+		private void RenderScaleExample() {
+			// This requires the render asset to be URP or HDRP
+			if (Input.GetKeyDown(KeyCode.U)) {
+				((UniversalRenderPipelineAsset)GraphicsSettings.defaultRenderPipeline).renderScale = 0.1f;
+			}
+
+			if (Input.GetKeyDown(KeyCode.I)) {
+				((UniversalRenderPipelineAsset)GraphicsSettings.defaultRenderPipeline).renderScale = 1f;
+			}
+		}
+	}
 	#endregion
 }
