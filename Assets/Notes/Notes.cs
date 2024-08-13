@@ -439,4 +439,18 @@ public class Notes : MonoBehaviour {
 	}
 	*/
 	#endregion
+
+	#region Addressables Remote
+	// - Setup addressables to load assets from a remote location (cloud, cdn)
+	// -- Deliver updated assets to players without needing to update the game
+
+	// - To setup addressables remote:
+	// -- Open the window -> Window -> Asset Management -> Addressables -> Settings
+	// --- Under Content Update enable Build Remote Catalog and set 'Build & Load Paths' to Remote
+	// ---- In the 'Addressables Groups' window, select the group and set the 'Build & Load Paths' to Remote
+	// ----- In the 'Addressables Groups' window, build the asset bundles and upload them to the server
+	// ------ To update the asset bundles, in the same window as building, click the 'Update a Previous Build' button, and upload them to the server
+
+	// - To use the remote assets within the editor you can change the 'Play Mode Script' option in the Addressables Groups window
+	#endregion
 }
