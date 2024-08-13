@@ -526,4 +526,15 @@ public class Notes : MonoBehaviour {
 	// - Don't include assets, and download them from the cloud
 	// -- Mobile games do this to keep the initial download size small
 	#endregion
+
+	#region Unity Authentication
+	// - Create a user id for your player to then use with other unity services
+	// -- Useful for leaderboards, achievements, and saving progress
+
+	// - Has an anonymous sign-in option
+
+	// - Link to steam or other platforms, so when they login to another pc on their steam account they keep their progress
+
+	// - Part of Unity gaming services - https://unity.com/products/authentication
+	#endregion
 }
