@@ -1,30 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class TestingWebRequests : MonoBehaviour {
-	[SerializeField] private TextMeshProUGUI text;
+	[SerializeField] private TextMeshProUGUI textMesh;
+	[SerializeField] private RawImage rawImage;
 
 	private void Start() {
-		Debug.Log("TestingWebRequests.Start()");
-		string url = "https://google.com";
-		StartCoroutine(Get(url));
+		/*		string url = "https://google.com";
+				WebRequestUtil.Get(url, (string error) => {
+					Debug.LogError(error);
+					textMesh.SetText(error);
+				}, (string text) => {
+					textMesh.SetText(text);
+				});*/
+
+		string url = "https://i.netch.dev/uploads/e22d313b-49a9-4c4a-bcee-d6569d54664d.png";
+		WebRequestUtil.GetTexture(url, (string error) => {
+			Debug.LogError(error);
+			textMesh.SetText(error);
+		}, (Texture2D texture) => {
+			textMesh.SetText("Success!");
+			rawImage.texture = texture;
+		});
 	}
 
-	private IEnumerator Get(string url) {
-		using (UnityWebRequest unityWebRequest = UnityWebRequest.Get(url)) {
-			yield return unityWebRequest.SendWebRequest();
 
-			if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError) {
-				Debug.LogError(unityWebRequest.error);
-				text.SetText(unityWebRequest.error);
-				yield break;
-			}
-
-			Debug.Log(unityWebRequest.downloadHandler.text);
-			text.SetText(unityWebRequest.downloadHandler.text);
-		}
-	}
 }

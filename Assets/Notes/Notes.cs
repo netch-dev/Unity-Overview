@@ -360,5 +360,7 @@ public class Notes : MonoBehaviour {
 
 	// - The UnityWebRequest implements IDisposable, so you should use it in a using statement
 
+	// - UnityWebRequestTexture can be used to download images
+	// -- returns a Texture2D
 	#endregion
 }
