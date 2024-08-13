@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - environment
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5defe4c1a64f6db40aa0fef005b596ee
+    m_Address: Assets/Prefabs/Addressables Test/SpecialSprites
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - specialSprites
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 14dde7430408f7048b989f9a4b6ad8db, type: 2}
   m_SchemaSet:

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -399,6 +400,39 @@ public class Notes : MonoBehaviour {
 	// -- Open the window -> Window -> Asset Management -> Addressables
 	// -- Create a new group
 	// -- Drag and drop the assets or folders into the group
+	// -- Create an asset reference in your script - [SerializeField] private AssetReference assetReference;
+	// -- Spawn the asset using the LoadAssetAsync method:
+	/*
+	 private void LoadAddressableViaReference() {
+		assetReference.LoadAssetAsync<GameObject>().Completed += (asyncOperationHandle) => {
+			if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded) {
+				Instantiate(asyncOperationHandle.Result);
+			} else {
+				Debug.LogError("Failed to load asset");
+			}
+		};
+	 }
+	 */
 
+	// - Using AssetReference can be error prone since it can be of many types
+	// -- To enforce a specific type you can use one of the included types like AssetReferenceGameObject, AssetReferenceSprite
+	// --- You can also create your own types by inheriting from AssetReferenceT
+	[System.Serializable]
+	public class AssetReferenceAudioClip : AssetReferenceT<AudioClip> {
+		public AssetReferenceAudioClip(string guid) : base(guid) { }
+	}
+
+	// - Entire folders can be marked as addressable
+	// -- If you make a folder addressable and drag another object into that folder, that new object will also be addressable
+	// --- To load them add a label to the folder and use the AssetLabelReference
+	/*
+	[SerializeField] private AssetLabelReference specialSpritesLabelReference;
+
+	private void LoadAddressablesFolder() {
+		Addressables.LoadAssetsAsync<Sprite>(specialSpritesLabelReference, (sprite) => {
+			Debug.Log(sprite);
+		});
+	}
+	*/
 	#endregion
 }

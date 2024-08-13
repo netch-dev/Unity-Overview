@@ -2,15 +2,35 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
+[System.Serializable]
+public class AssetReferenceAudioClip : AssetReferenceT<AudioClip> {
+	public AssetReferenceAudioClip(string guid) : base(guid) { }
+}
+
 public class SpawnObjectAddressables : MonoBehaviour {
-	[SerializeField] private AssetReference assetReference;
+	[SerializeField] private AssetReferenceGameObject assetReferenceGameObject;
 
 	[SerializeField] private AssetLabelReference assetLabelReference;
 
+	[SerializeField] private AssetLabelReference specialSpritesLabelReference;
+
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.T)) {
-			LoadAddressableViaLabel();
+			InstantiateAddressableDirectly();
+			LoadAddressablesFolder();
 		}
+	}
+
+	private void LoadAddressablesFolder() {
+		Addressables.LoadAssetsAsync<Sprite>(specialSpritesLabelReference, (sprite) => {
+			Debug.Log(sprite);
+		});
+	}
+
+	private void InstantiateAddressableDirectly() {
+		assetReferenceGameObject.InstantiateAsync();
+
+		// This also has a Completed event that can be used to check if the asset was loaded successfully
 	}
 
 	private void LoadAddressableViaLabel() {
@@ -24,7 +44,7 @@ public class SpawnObjectAddressables : MonoBehaviour {
 	}
 
 	private void LoadAddressableViaReference() {
-		assetReference.LoadAssetAsync<GameObject>().Completed += (asyncOperationHandle) => {
+		assetReferenceGameObject.LoadAssetAsync<GameObject>().Completed += (asyncOperationHandle) => {
 			if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded) {
 				Instantiate(asyncOperationHandle.Result);
 			} else {
