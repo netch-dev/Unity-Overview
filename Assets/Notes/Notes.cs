@@ -537,4 +537,44 @@ public class Notes : MonoBehaviour {
 
 	// - Part of Unity gaming services - https://unity.com/products/authentication
 	#endregion
+
+	#region Remote Config
+	// - https://unity.com/products/remote-config
+	// - Define fields in your game and easily modify them in the dashboard
+
+	// - Useful for changing values without needing to update the game
+	// -- Game balancing, etc
+
+	// - To use it install the authentication and remote config package from the Unity Registry
+
+	public class GameRemoteConfig : MonoBehaviour {
+		private const string PLAYER_SPEED = "playerSpeed";
+		private const string SCORE_PER_COIN = "scorePerCoin";
+
+		private float playerSpeed = 4f;
+		private int scorePerCoin = 10;
+
+		public struct UserAttributes {
+			// Player score, difficulty, etc
+		}
+
+		public struct AppAttributes {
+			// Game version, platform, etc
+		}
+
+		private async void Awake() {
+			/*			await UnityServices.InitializeAsync();
+
+						// - First you have to authenticate the user
+						await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+						RuntimeConfig runtimeConfig = await RemoteConfigService.Instance.FetchConfigsAsync(new UserAttributes(), new AppAttributes());
+
+						playerSpeed = runtimeConfig.GetFloat(PLAYER_SPEED, playerSpeed);
+						scorePerCoin = runtimeConfig.GetInt(SCORE_PER_COIN, scorePerCoin);*/
+
+			// Set the player speed and score per coin in their respective scripts
+		}
+	}
+	#endregion
 }
