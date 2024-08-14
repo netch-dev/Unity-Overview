@@ -1,4 +1,10 @@
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.Services.Authentication;
+using Unity.Services.CloudSave;
+using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
@@ -591,7 +597,83 @@ public class Notes : MonoBehaviour {
 
 	// - Use it to schedule cloud content, for example a christmas event update
 
-	// - Uses Jexl conditions in the dashboard to work with the UserAttributes and AppAttributes
-	// -- There are all kinds of build-in conditions, like country, cpu, etc
+	// - Uses Jexl conditions in the dashboard to work with the UserAttributes and	
+	// -- There are all kinds of built-in conditions, like country, cpu, etc
+	#endregion
+
+	#region Cloud Save
+	// - Used to save any data to the cloud. Game save, stats, etc
+
+	// - Works with the authentication service
+	// -- Cross platform support
+
+	// - Part of Unity gaming services - https://unity.com/products/cloud-save
+
+	public class GameCloudSave : MonoBehaviour {
+		private const string KEY_PLAYER_NAME = "PlayerName";
+		private const string KEY_PLAYER_DAMAGE = "PlayerDamage";
+		private const string KEY_SPAWN_POSITION = "SpawnPosition";
+		private const string KEY_SAVE_OBJECT = "SaveObject";
+
+		public struct SaveObject {
+			public int playerlevel;
+			public string worldName;
+		}
+
+		private async void Awake() {
+			await UnityServices.InitializeAsync();
+
+			// Log the user in. Here we're using anonymous login
+			await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+			Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
+		}
+
+		private void Update() {
+			if (Input.GetKeyDown(KeyCode.S)) {
+				SaveData();
+			}
+
+			if (Input.GetKeyDown(KeyCode.L)) {
+				LoadData();
+			}
+		}
+
+		private async void SaveData() {
+			// Unity will automatically serialize the data
+			Dictionary<string, object> dataDictionary = new Dictionary<string, object> {
+				[KEY_PLAYER_NAME] = "Netch",
+				[KEY_PLAYER_DAMAGE] = 10,
+				[KEY_SPAWN_POSITION] = JsonUtility.ToJson(new Vector3(0, 10, 10)), // Unity doesn't serialize Vector3, convert to json
+				[KEY_SAVE_OBJECT] = new SaveObject {
+					playerlevel = 50,
+					worldName = "World 2"
+				}
+			};
+
+			await CloudSaveService.Instance.Data.Player.SaveAsync(dataDictionary);
+		}
+
+		private async void LoadData() {
+			// Unity doesnt automatically deserialize the data
+
+			// There are two methods for loading
+			// 1. LoadAll
+			Dictionary<string, Unity.Services.CloudSave.Models.Item> loadedDataDictionary = await CloudSaveService.Instance.Data.Player.LoadAllAsync();
+			Debug.Log($"{KEY_PLAYER_NAME}: {loadedDataDictionary[KEY_PLAYER_NAME].Value.GetAsString()}");
+			Debug.Log($"{KEY_PLAYER_DAMAGE}: {loadedDataDictionary[KEY_PLAYER_DAMAGE].Value.GetAs<int>()}");
+			Debug.Log($"{KEY_SPAWN_POSITION}: {JsonUtility.FromJson<Vector3>(loadedDataDictionary[KEY_SPAWN_POSITION].Value.GetAsString())}");
+
+			SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(loadedDataDictionary[KEY_SAVE_OBJECT].Value.GetAsString());
+			Debug.Log($"{KEY_SAVE_OBJECT}: {saveObject.playerlevel}, {saveObject.worldName}");
+
+			// 2. Load - Only loads the keys we ask for
+			HashSet<string> keysToLoad = new HashSet<string> { KEY_PLAYER_NAME };
+			Dictionary<string, Unity.Services.CloudSave.Models.Item> loadedData = await CloudSaveService.Instance.Data.Player.LoadAsync(keysToLoad);
+			if (loadedData.TryGetValue(KEY_PLAYER_NAME, out Unity.Services.CloudSave.Models.Item playerName)) {
+				Debug.Log($"keyName: {playerName.Value.GetAsString()}");
+			}
+		}
+	}
 	#endregion
 }
