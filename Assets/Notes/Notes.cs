@@ -676,4 +676,19 @@ public class Notes : MonoBehaviour {
 		}
 	}
 	#endregion
+
+	#region Decal
+	// - Useful for bullet holes, blood splatters, etc
+
+	// - Decals project onto the surface of the object, unlike a plane which is always flat
+
+	// - To enable decals you need to add the 'decal' renderer feature on the renderer asset
+	// -- Then create a gameobject and add the decal projector component
+	// --- To render a decal it needs to use a material that is using the decal shader
+
+	// - Use render layers on the decal object to only render on certain objects. This needs to be enabled in the renderer asset
+	// -- Then on the character object, change the layer to something different from the decal layer
+
+	// - Enable 'GPU instancing' if you have tons of bullet holes or blood splats
+	#endregion
 }
