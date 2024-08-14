@@ -556,10 +556,12 @@ public class Notes : MonoBehaviour {
 
 		public struct UserAttributes {
 			// Player score, difficulty, etc
+			public bool isBeginner;
 		}
 
 		public struct AppAttributes {
 			// Game version, platform, etc
+			public float version;
 		}
 
 		private async void Awake() {
@@ -576,5 +578,20 @@ public class Notes : MonoBehaviour {
 			// Set the player speed and score per coin in their respective scripts
 		}
 	}
+	#endregion
+
+	#region Game Overrides
+	// - Manage your game without needing to make a separate build
+
+	// - Apply overrides to various unity tools with different values for different audiences
+	// - For example: Easy mode, hard mode, etc
+	// -- For easy mode you could set the score per coin to 20, and hard mode the score per coin to 5
+
+	// - Works on top of remote config, and other unity services
+
+	// - Use it to schedule cloud content, for example a christmas event update
+
+	// - Uses Jexl conditions in the dashboard to work with the UserAttributes and AppAttributes
+	// -- There are all kinds of build-in conditions, like country, cpu, etc
 	#endregion
 }
