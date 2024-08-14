@@ -691,4 +691,18 @@ public class Notes : MonoBehaviour {
 
 	// - Enable 'GPU instancing' if you have tons of bullet holes or blood splats
 	#endregion
+
+	#region Frame Debugger
+	// - Useful tool to ensure the game is rendering as best as possible
+
+	// - Window -> Analysis -> Frame debugger
+
+	// - Use batching to make the game run more efficiently. Combines multiple draw calls into one
+
+	// - To optimize the game:
+	// -- Use fewer materials, and make sure they are using the same shader
+	// -- Enable dynamic batching on the render pipeline asset
+	// -- Enable srp batcher on the render pipeline asset
+	// -- Use the 'GPU instancing' option on materials
+	#endregion
 }
