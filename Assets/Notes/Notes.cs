@@ -758,4 +758,22 @@ public class Notes : MonoBehaviour {
 	// -- Using the text mesh pro fallback font asset you can use a different font for different languages
 	// --- Window -> Text Mesh pro -> Font asset creator
 	#endregion
+
+	#region TextMeshPro Fallback
+	// - Define a fallback for fonts to use when a glyph isn't found in the current font
+
+	// - When setting up localization some fonts might not have all of the characters needed for the language
+
+	// - We can use google fonts to get fonts for different languages
+
+	// - To setup a fallback font:
+	// -- Window -> Text Mesh Pro -> Font Asset Creator
+	// --- Select the source font that contains the characters you need
+	// ---- Select 'Custom Characters' for the character set
+	// ----- Below that enter all of the characters you need
+
+	// - After creating a fallback font, assign it to the text mesh pro component
+
+	// - In the main font for the game, scroll down and include the new fallback font
+	#endregion
 }
