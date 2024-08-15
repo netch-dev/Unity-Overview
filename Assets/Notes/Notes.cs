@@ -705,4 +705,21 @@ public class Notes : MonoBehaviour {
 	// -- Enable srp batcher on the render pipeline asset
 	// -- Use the 'GPU instancing' option on materials
 	#endregion
+
+	#region Cloud Diagnostics
+	// - https://unity.com/products/cloud-diagnostics
+
+	// - Receive automated bug/crash reports in the dashboard whenever players encounter an error
+
+	// - After installing the package enable it in the project settings -> services -> cloud diagnostics
+
+	// - Works with custom exceptions and unity exceptions
+	// -- Use Debug.LogException, if you don't want to stop code execution
+	#endregion
+
+	#region User Reporting
+	// - Receive manual user sent reports, incliding any data or screenshots they provide
+
+
+	#endregion
 }
