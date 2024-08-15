@@ -8,6 +8,8 @@ using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -718,8 +720,42 @@ public class Notes : MonoBehaviour {
 	#endregion
 
 	#region User Reporting
-	// - Receive manual user sent reports, incliding any data or screenshots they provide
+	// - Receive manual user sent reports, including any data or screenshots they provide
 
 
+	#endregion
+
+	#region Localization
+	// - Used for translations, and changing the language of the game
+	// -- On steam only 30% of players play in english
+
+	// - Package can be found in the package manager in the Unity Registry
+
+	// - Setup:
+	// -- Project Settings -> Localization -> Add a new locale
+	// --- If the game doesn't have much text data, you can set the preload behaviour to 'preload all locales' and enable 'initialize synchonously'
+
+	// -- Window -> Asset Management -> Localization Tables
+	// --- Create tables for categories, like main menu, general messages, knowledgebase, etc
+	// ---- Add the languages you want to support
+
+	// ---- Right click the text mesh component and click 'Localize'
+	// ----- Assign a table and key
+
+	// - For images you'll need to create a separate table and select asset table
+	// -- Right click the image component and click 'Localize'
+
+	// - You can localize any asset type, for example audio
+
+	// - To change the language in the editor, you can use the menu in the top right after clicking play, or use the menu, Window -> Asset Management -> Localization Scene Controls
+
+	// - Localization is built on top of Addressables
+
+	// - You can export the localization tables to a csv file by selecting the table and clicking the burger menu
+	// -- When exporting the cvx file make sure it's exporting with UTF-8 encoding
+
+	// - The unity font doesn't support japaneses characters, so you'll need to use a different font
+	// -- Using the text mesh pro fallback font asset you can use a different font for different languages
+	// --- Window -> Text Mesh pro -> Font asset creator
 	#endregion
 }
